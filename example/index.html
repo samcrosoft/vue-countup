@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Vue CountUp Demo</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/1.0.16/vue.js"></script>
+</head>
+<body>
+<style type="text/css">
+    .myCounter{
+        font-size: 12em;
+        margin: 0;
+        color: #4d63bc;
+    }
+</style>
+<div id="App">
+    <div>
+        the count up class is below
+    </div>
+    <div>
+        <vuecountup class="myCounter" :end="120500" :duration="2.5" :options="{useEasing : true,
+            useGrouping : true,
+            separator : ',',
+            decimal : '.',
+            prefix : '',
+            suffix : ''}"></vuecountup>
+    </div>
+</div>
+<script src="./libs/countUp.js"></script>
+<script src="../dist/vue-count-up.js"></script>
+<script type="text/javascript">
+    /*
+     * make use of VueCountUp here
+     */
+    Vue.use(window.VueCountUp);
+    var oVue = new Vue({
+        el: '#App'
+    });
+</script>
+
+</body>
+</html>

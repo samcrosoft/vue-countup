@@ -1,0 +1,23 @@
+{
+  "name": "vue-countup",
+  "version": "0.1.0",
+  "authors": [
+    "Samuel Olowofela <samuel_olowofela@yahoo.com>"
+  ],
+  "description": "sample description",
+  "main": "./dist/vue-count-up.js",
+  "keywords": [
+    "vue",
+    "vue-countup",
+    "countdown",
+    "countup"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
