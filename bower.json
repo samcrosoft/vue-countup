@@ -6,6 +6,10 @@
   ],
   "description": "sample description",
   "main": "./dist/vue-count-up.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/samcrosoft/vue-countup"
+  },
   "keywords": [
     "vue",
     "vue-countup",
