@@ -73,64 +73,45 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+	/*
+	 * expose the install method
+	 */
 	function install(Vue) {
 	  /*
 	   * Set the component to the Vue object
 	   */
 	  Vue.component('vuecountup', _VueCountUp2.default);
-	}
-
-	//(function () {
-	//    var VueCountUp = {};
-	//
-	//    /**
-	//     * This will install the component
-	//     * @param Vue
-	//     */
-	//    VueCountUp.install = function (Vue) {
-	//
-	//        var oComponent = Vue.extend({
-	//            template: '<span></span>'
-	//
-	//        });
-	//
-	//
-	//    };
-	//
-	//    /*
-	//     * Install and use Vue Component if vue is present
-	//     */
-	//    if (window.Vue) {
-	//        window.VueCountUp = VueCountUp;
-	//        Vue.use(VueCountUp);
-	//    }
-	//})();
-	/**
-	 * Created by Adebola on 03/02/2016.
-	 */
+	} /**
+	   * Created by Adebola on 03/02/2016.
+	   */
 
 /***/ },
 /* 1 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __vue_script__, __vue_template__
+	var __vue_styles__ = {}
 	__webpack_require__(2)
 	__vue_script__ = __webpack_require__(6)
-	if (__vue_script__ &&
-	    __vue_script__.__esModule &&
-	    Object.keys(__vue_script__).length > 1) {
+	if (Object.keys(__vue_script__).some(function (key) { return key !== "default" && key !== "__esModule" })) {
 	  console.warn("[vue-loader] src\\VueCountUp.vue: named exports in *.vue files are ignored.")}
 	__vue_template__ = __webpack_require__(7)
 	module.exports = __vue_script__ || {}
 	if (module.exports.__esModule) module.exports = module.exports.default
+	var __vue_options__ = typeof module.exports === "function" ? (module.exports.options || (module.exports.options = {})) : module.exports
 	if (__vue_template__) {
-	(typeof module.exports === "function" ? (module.exports.options || (module.exports.options = {})) : module.exports).template = __vue_template__
+	__vue_options__.template = __vue_template__
 	}
+	if (!__vue_options__.computed) __vue_options__.computed = {}
+	Object.keys(__vue_styles__).forEach(function (key) {
+	var module = __vue_styles__[key]
+	__vue_options__.computed[key] = function () { return module }
+	})
 	if (false) {(function () {  module.hot.accept()
 	  var hotAPI = require("vue-hot-reload-api")
-	  hotAPI.install(require("vue"), true)
+	  hotAPI.install(require("vue"), false)
 	  if (!hotAPI.compatible) return
-	  var id = "C:\\xampp\\htdocs\\_new_development\\_Bower_Packages\\vue-countup\\src\\VueCountUp.vue"
+	  var id = "_v-3771c1de/VueCountUp.vue"
 	  if (!module.hot.data) {
 	    hotAPI.createRecord(id, module.exports)
 	  } else {
@@ -173,7 +154,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 	// module
-	exports.push([module.id, "\n", ""]);
+	exports.push([module.id, "\n\n\n\n", ""]);
 
 	// exports
 
@@ -467,7 +448,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	});
 	exports.default = {
 	    data: function data() {
-	        return {};
+	        return {
+	            _iso: null
+	        };
 	    },
 
 	    props: {
@@ -505,9 +488,41 @@ return /******/ (function(modules) { // webpackBootstrap
 	            return this.duration;
 	        }
 	    },
+	    watch: {
+	        endValue: function endValue(val, oldVal) {
+	            this.reInitiateCounter();
+	        },
+	        startValue: function startValue(val, oldVal) {
+	            this.reInitiateCounter();
+	        },
+	        decimalValue: function decimalValue(val, oldVal) {
+	            this.reInitiateCounter();
+	        },
+	        durationValue: function durationValue(val, oldVal) {
+	            this.reInitiateCounter();
+	        }
+	    },
 	    ready: function ready() {
-	        var oCountUp = new CountUp(this.$el, this.startValue, this.endValue, this.decimalValue, this.durationValue, this.options);
-	        oCountUp.start();
+	        if (!this._iso) {
+	            this.initiateCount();
+	        }
+	    },
+
+	    methods: {
+	        initiateCount: function initiateCount() {
+	            this._iso = new CountUp(this.$el, this.startValue, this.endValue, this.decimalValue, this.durationValue, this.options);
+	            this._iso.start();
+	        },
+	        clearCountHolder: function clearCountHolder() {
+	            this._iso = null;
+	        },
+	        reInitiateCounter: function reInitiateCounter() {
+	            if (this._iso) {
+	                this.clearCountHolder();
+
+	                this.initiateCount();
+	            }
+	        }
 	    }
 	};
 
