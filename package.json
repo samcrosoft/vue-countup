@@ -1,6 +1,6 @@
 {
   "name": "vue-countup",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "A plugin to count up to a figure using Vue.js",
   "main": "dist/vue-count-up.js",
   "scripts": {
