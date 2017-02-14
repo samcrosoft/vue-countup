@@ -18,12 +18,27 @@
         the count up class is below
     </div>
     <div>
-        <vuecountup class="myCounter" :end="120500" :duration="2.5" :options="{useEasing : true,
+        <vuecountup class="myCounter" :end="iEndValue" 
+            :start='iStartValue'
+            :duration="duration" :options="{useEasing : true,
             useGrouping : true,
             separator : ',',
             decimal : '.',
             prefix : '',
             suffix : ''}"></vuecountup>
+    </div>
+    <h3>Trigger A Re-count </h6>
+    <div>
+        click To Change the <strong>End Value</strong>
+        <button id='reCountMe' @click='incrementEnd' v-text='iEndValue'>/button>
+    </div>
+    <div>
+        click To Change the <strong>Duration</strong>
+        <button id='reCountMe' @click='incrementDuration' v-text='duration'>/button>
+    </div>
+    <div>
+        click To Change the <strong>Starter Value</strong>
+        <button id='reCountMe' @click='incrementStart' v-text='iStartValue'>/button>
     </div>
 </div>
 <script src="./libs/countUp.js"></script>
@@ -34,7 +49,23 @@
      */
     Vue.use(window.VueCountUp);
     var oVue = new Vue({
-        el: '#App'
+        el: '#App',
+        data:{
+            iStartValue:0,
+            iEndValue: 80000,
+            duration:2.5
+        },
+        methods:{
+            incrementEnd(){
+                this.iEndValue += 10000;
+            },
+            incrementStart(){
+                this.iStartValue += 1000;
+            },
+            incrementDuration(){
+                this.duration += 0.5;
+            },
+        }
     });
 </script>
 
